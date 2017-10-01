@@ -5,7 +5,7 @@ import numpy as np
 import os
 import tensorflow as tf
 from random import randint
-import boto3
+#import boto3
 from pathlib import Path
 import re
 
@@ -101,8 +101,9 @@ def shell_command(cmd,print_to_stdout=False):
 
 
 def upload_s3_file(source_path,bucket_name,target_path):
-    s3 = boto3.client('s3')
-    s3.upload_file(source_path, bucket_name, target_path)
+    #s3 = boto3.client('s3')
+    #s3.upload_file(source_path, bucket_name, target_path)
+    print("The upload_s3_file is called with parameters source_path(%s) bucket_name(%s) target_path(%s)" % (source_path,bucket_name,target_path))
 
 def cleanup(dir):
     if 'tf_visual_data/runs/' in dir:
@@ -188,14 +189,15 @@ def multiple_random_windows_from_random_sessions(data_path,window_size,window_co
 
 
 def file_is_in_s3(bucket_name,full_path_to_file):
-    s3 = boto3.resource('s3')
-    bucket = s3.Bucket(bucket_name)
-    answer = False
-    for obj in bucket.objects.page_size(100):
-        if full_path_to_file in str(obj):
-            answer = True
-            break
-    return answer
+    #s3 = boto3.resource('s3')
+    #bucket = s3.Bucket(bucket_name)
+    #answer = False
+    #for obj in bucket.objects.page_size(100):
+    #    if full_path_to_file in str(obj):
+    #        answer = True
+    #        break
+    #return answer
+    print("The file_is_in_s3 is called with parameter bucket_name(%s),full_path_to_file(%s)" % (bucket_name,full_path_to_file))
 
 
 def file_is_stored_locally(full_path_to_file):
